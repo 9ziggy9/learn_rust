@@ -1,0 +1,22 @@
+* Learning Rust
+Follows the Rust book, with exercises chosen by me at certain points.
+
+
+** Compiling
+Simple compilation can be accomplished via rustc
+#+BEGIN_SRC
+ $ rustc hello_world/main.rs && ./hello_world/main
+  >>>  "Hello, World!"
+#+END_SRC
+
+** Cargo
+#+BEGIN_SRC
+ $ cargo new hello_cargo
+ $ cd hello_cargo
+#+END_SRC
+Note that by default cargo will inistialize a git repo
+if one does not already exist. You can override this behavior
+with
+#+BEGIN_SRC
+ $ cargo new --vcs=none hello_cargo
+#+END_SRC
