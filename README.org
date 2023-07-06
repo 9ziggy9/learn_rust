@@ -1,7 +1,6 @@
 * Learning Rust
 Follows the Rust book, with exercises chosen by me at certain points.
 
-
 ** Compiling
 Simple compilation can be accomplished via rustc
 #+BEGIN_SRC
@@ -9,7 +8,8 @@ Simple compilation can be accomplished via rustc
   >>>  "Hello, World!"
 #+END_SRC
 
-** Cargo
+** Cargo (package management with "crates")
+*** Getting Started
 #+BEGIN_SRC
  $ cargo new hello_cargo
  $ cd hello_cargo
@@ -19,4 +19,37 @@ if one does not already exist. You can override this behavior
 with
 #+BEGIN_SRC
  $ cargo new --vcs=none hello_cargo
+#+END_SRC
+Notice that the Cargo.toml file more or less is resemblant of say a
+package.json file--dependencies, i.e. third-party packages are known
+as "crates" in Rust jargon.
+We can build a Rust project via
+#+BEGIN_SRC
+ $ cargo build
+#+END_SRC
+and note that the compiled executable will exist in the target/debug
+directory.
+#+BEGIN_SRC
+ $ ./target/debug/hello_cargo
+#+END_SRC
+Should print "Hello, Cargo!" and finally,
+#+BEGIN_SRC
+ $ cargo run
+#+END_SRC
+should both build and then run the project.
+
+*** Additional Commands
+**** Checking without compiling
+#+BEGIN_SRC
+ $ cargo check 
+#+END_SRC
+**** Cleaning old executables
+#+BEGIN_SRC
+ $ cargo clean 
+#+END_SRC
+**** Building for release
+This will compile with optimizations, the resultant executable will
+exist inside target/release rather than target/debug.
+#+BEGIN_SRC
+ $ cargo build --release
 #+END_SRC
