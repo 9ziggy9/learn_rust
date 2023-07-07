@@ -11,6 +11,7 @@ use std::process;
 // methods.
 use rand::Rng;
 
+// TODO: Write generic usage string.
 const MSG_ARGS_TOO_FEW: &str = "Too few command line arguments.";
 const MSG_ARGS_TOO_MNY: &str = "Too many command line arguments.";
 const MSG_ARGS_DEFAULT: &str = "No command line args -- defaulting to 1 ... 10";
