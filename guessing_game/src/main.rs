@@ -16,6 +16,8 @@ const MSG_ARGS_TOO_MNY: &str = "Too many command line arguments.";
 const MSG_ARGS_DEFAULT: &str = "No command line args -- defaulting to 1 ... 10";
 
 fn min_max_from_args() -> [u32; 2] {
+    // ALSO WORKS:
+    // let args = env::args().collect::<Vec<String>>();
     let args: Vec<String> = env::args().collect();
     if args.len() == 1 {
         println!("WARNING IN ARGS: {}", MSG_ARGS_DEFAULT);
