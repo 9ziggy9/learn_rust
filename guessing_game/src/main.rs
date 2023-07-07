@@ -56,19 +56,33 @@ fn main() {
 
         // Because parse returns result, we can match on
         // Ok and Err; Ok holds correct value called num
+
         let guess = match guess.trim().parse::<u32>() {
-            Ok(num) => match num {
-                1..=10 => num,
-                     _ => {
-                    println!("Pick a number between 1 and 10.");
-                    continue;
-                }
-            },
-            Err(_)  => {
+            Ok(num) if (1..=10).contains(&num) => num,
+            Ok(_)  => {
+                println!("Please enter a number between 1 and 10.");
+                continue;
+            }
+            Err(_) => {
                 println!("Please enter a valid radix 10 number!");
                 continue;
             },
         };
+
+        // Another example which uses a nested matching.
+        // let guess = match guess.trim().parse::<u32>() {
+        //     Ok(num) => match num {
+        //         1..=10 => num,
+        //              _ => {
+        //             println!("Pick a number between 1 and 10.");
+        //             continue;
+        //         }
+        //     },
+        //     Err(_)  => {
+        //         println!("Please enter a valid radix 10 number!");
+        //         continue;
+        //     },
+        // };
 
         // String interpolation
         println!("You guessed: {guess}");
