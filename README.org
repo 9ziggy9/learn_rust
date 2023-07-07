@@ -53,3 +53,30 @@ exist inside target/release rather than target/debug.
 #+BEGIN_SRC
  $ cargo build --release
 #+END_SRC
+
+** Problems
+NOTE: when working with Crates, you will NOT KNOW which methods
+and functions to call from a crate, so each crate has documentation
+for it's usage. You can build HTML documentation for a crate by
+simply running:
+#+BEGIN_SRC
+ cargo doc --open 
+#+END_SRC
+*** Guessing Game (from Book)
+**** Basics
+Simple program which reads from stdin, checks against random number
+then outputs success/failure.
+#+BEGIN_SRC
+ ./guessing_game 
+#+END_SRC
+The Cargo.toml file includes a dependency to generate random numbers.
+Note that we can add this dependency explicitly, or install a library
+by use of:
+#+BEGIN_SRC
+ $ cargo add rand 
+#+END_SRC
+Cargo uses Semantic Versioning--meaning that 0.8.5 is actually shorthand
+for ^0.8.5 which means any version which at least 0.8.5 but before 0.9.0
+(next major release).
+
+**** Comparing Guesses and Better Feedback
