@@ -18,6 +18,8 @@ fn main() {
     // to the current thread of execution, and seeded by OS.
     // After this, we call gen_range on this random number
     // generator.
+    println!("Welcome to the guessing game!");
+    println!("Values range from 1 to 10.");
     let secret_num = rand::thread_rng().gen_range(1..=10);
 
     // Note that String type has a string comparison
@@ -55,8 +57,14 @@ fn main() {
         // Because parse returns result, we can match on
         // Ok and Err; Ok holds correct value called num
         let guess = match guess.trim().parse::<u32>() {
-            Ok(num) => num,
-            Err(_) => {
+            Ok(num) => match num {
+                1..=10 => num,
+                     _ => {
+                    println!("Pick a number between 1 and 10.");
+                    continue;
+                }
+            },
+            Err(_)  => {
                 println!("Please enter a valid radix 10 number!");
                 continue;
             },
