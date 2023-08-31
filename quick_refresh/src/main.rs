@@ -1,19 +1,24 @@
 use std::env::{self, Args};
 use std::iter::Enumerate;
 
-const MSG_WELCOME: &str = "Hello, welcome to command line experiments!";
+const MSG_WELCOME: &str = "\nHello, welcome to command line experiments!";
 
-fn cmd_line_enumerate() -> Enumerate<Args> {
-    return env::args().enumerate();
+fn cmd_line_enumerate() -> Enumerate<Args> { env::args().enumerate() }
+
+fn cmd_line_to_string(args: Enumerate<Args>) -> String {
+    return args
+        .map(|(n, arg)| format!("Arg-{n}: {arg}"))
+        .collect::<Vec<String>>()
+        .join("\n");
 }
 
-fn cmd_line_to_string() -> String {
-    return cmd_line_enumerate()
-        .map(|(n, arg)| format!("Arg-{n}: {arg}\n"))
-        .collect::<String>();
-}
+fn msg_intro(msgs: &[&str]) { msgs.iter().for_each(|m| println!("{m}")) }
 
 fn main() {
-    println!("{}", MSG_WELCOME);
-    println!("{}", cmd_line_to_string());
+    let args = cmd_line_enumerate();
+    msg_intro(&[
+        MSG_WELCOME,
+        "\nYou entered the follow command line args:",
+        &cmd_line_to_string(args)
+    ]);
 }
